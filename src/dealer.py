@@ -1,4 +1,7 @@
+from random import shuffle
+
 from src.card import Card
+from src.enums import SuiteTypes
 
 
 class Dealer:
@@ -10,7 +13,13 @@ class Dealer:
         return self._cards
 
     def shuffle(self):
-        pass
+        shuffle(self._cards)
+        return self._cards
 
     def _get_cards(self):
-        return [Card() for card in range(40)]
+        cards = []
+        for index in range(1, 14):
+            for suit in SuiteTypes:
+                cards.append(Card(suit=suit, value=index))
+
+        return cards
