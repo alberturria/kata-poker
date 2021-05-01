@@ -49,12 +49,12 @@ class HandResolver:
 
     @staticmethod
     def _is_straight(hand):
-        values = [card.value for card in hand]
+        values = [card.value.value for card in hand]
         return (max(values) - min(values) == 4)
 
     @staticmethod
     def _maximum_value_in_the_hand(hand):
-        return max(card.value for card in hand)
+        return max(card.value.value for card in hand)
 
     @staticmethod
     def _is_royal_flush(hand):
@@ -63,12 +63,12 @@ class HandResolver:
 
     @staticmethod
     def _is_poker(hand):
-        collection = Counter([card.value for card in hand])
+        collection = Counter([card.value.value for card in hand])
         return collection.most_common(1)[0][1] == 4
 
     @staticmethod
     def _is_full_house(hand):
-        collection = Counter([card.value for card in hand])
+        collection = Counter([card.value.value for card in hand])
         return collection.most_common(1)[0][1] == 3 and collection.most_common(2)[1][1] == 2
 
     @staticmethod
@@ -77,25 +77,25 @@ class HandResolver:
 
     @staticmethod
     def _is_set(hand):
-        collection = Counter([card.value for card in hand])
+        collection = Counter([card.value.value for card in hand])
         return collection.most_common(1)[0][1] == 3
 
     @staticmethod
     def _get_value_of_the_most_repeated(hand):
-        collection = Counter([card.value for card in hand])
+        collection = Counter([card.value.value for card in hand])
         return collection.most_common(1)[0][0]
 
     @staticmethod
     def _get_full_house_value(hand):
-        collection = Counter([card.value for card in hand])
+        collection = Counter([card.value.value for card in hand])
         return collection.most_common(1)[0][0]
 
     @staticmethod
     def _is_two_pair(hand):
-        different_values = set(card.value for card in hand)
+        different_values = set(card.value.value for card in hand)
         return len(different_values) == 3
 
     @staticmethod
     def _is_pair(hand):
-        different_values = set(card.value for card in hand)
+        different_values = set(card.value.value for card in hand)
         return len(different_values) == 4
