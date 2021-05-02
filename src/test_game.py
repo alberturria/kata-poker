@@ -26,3 +26,12 @@ class GameTest(unittest.TestCase):
         game.start_game()
 
         self.assertTrue(mock_dealer.shuffle.called, 'Should have called the dealer')
+
+    @patch('src.game.ConsolePresenter')
+    def test_when_game_start_then_presenter_is_called(self, mocked_presenter_constructor):
+        mock_presenter = mocked_presenter_constructor.return_value
+        game = Game()
+
+        game.start_game()
+
+        self.assertTrue(mock_presenter.present_start_game.called, 'Should have called the dealer')

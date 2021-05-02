@@ -1,3 +1,4 @@
+from src.console_presenter import ConsolePresenter
 from src.enums import HandType
 from collections import Counter
 
@@ -40,6 +41,8 @@ class HandResolver:
                     highest_hand = hand
                 elif hand_type == HandType.FULL_HOUSE and HandResolver._get_full_house_value(hand) > HandResolver._get_full_house_value(highest_hand):
                     highest_hand = hand
+
+        ConsolePresenter.present_winning_hand(highest_hand)
         return highest_hand
 
     @staticmethod

@@ -2,7 +2,7 @@ from copy import copy
 from random import shuffle
 
 from src.card import Card
-from src.enums import SuiteTypes
+from src.enums import SuiteTypes, CardValue
 
 
 class Dealer:
@@ -30,9 +30,9 @@ class Dealer:
         self.shuffle()
 
     def _init_deck(self):
-        cards = []
-        for index in range(1, 14):
+        self._cards = []
+        for value in CardValue:
             for suit in SuiteTypes:
-                cards.append(Card(suit=suit, value=index))
+                self._cards.append(Card(suit=suit, value=value))
 
-        return cards
+        return self._cards
